@@ -35,13 +35,6 @@ public class ListaTareas
          cont ++;           
         }
     }
-    
-    /**
-     * mt para marcar una tarea como completada
-     */
-    public void marcarTarea(int numTarea){
-    
-    }
 }
 
 
