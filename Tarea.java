@@ -35,4 +35,17 @@ public class Tarea
         // put your code here
         return hecha;
     }
+    
+    /**
+     * mt que asigna el estado de la tarea. 
+     */
+    public void setHecha(boolean estaHecha)
+    {
+         hecha = estaHecha;
+    }
 }
+
+
+
+
+
