@@ -52,6 +52,17 @@ public class ListaTareas
             System.out.println("");
         }
     }
+    
+    /**
+     * mt para mostrar las tareas que contengan una determinada cadena pasada como parámetro, indicando si están completadas o no.
+     */
+    public void muestraTareaConCadena(String cadena){
+      for(Tarea tarea: tareas){
+          if(tarea.getName().contains(cadena)){
+            System.out.println(tarea.getName()+ ". ---está completada? " +tarea.getHecha());
+          }
+      }
+    }
 }
 
 
