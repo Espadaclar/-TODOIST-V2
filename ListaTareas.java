@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 /**
  * 
  */
@@ -52,17 +53,33 @@ public class ListaTareas
             System.out.println("");
         }
     }
-    
+
     /**
      * mt para mostrar las tareas que contengan una determinada cadena pasada como parámetro, indicando si están completadas o no.
      */
     public void muestraTareaConCadena(String cadena){
-      for(Tarea tarea: tareas){
-          if(tarea.getName().contains(cadena)){
-            System.out.println(tarea.getName()+ ". ---está completada? " +tarea.getHecha());
-          }
-      }
+        for(Tarea tarea: tareas){
+            if(tarea.getName().contains(cadena)){
+                System.out.println(tarea.getName()+ ". ---está completada? " +tarea.getHecha());
+            }
+        }
+    }
+
+    /**
+     * metodo para eliminar una tarea indicando la posición que ocupa.
+     */
+    public void eliminaTarea(int posicion){
+        posicion = posicion -1;
+        if(posicion >= 0 && posicion < tareas.size()){
+            tareas.remove(posicion );
+        }
+        else{
+             System.out.println("Herror, solo son válidos valores entre 1 y " +tareas.size());
+        }
     }
 }
+
+
+
 
 
