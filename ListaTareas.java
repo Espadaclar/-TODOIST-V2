@@ -31,8 +31,15 @@ public class ListaTareas
     public void mostrarTareas(){
         int cont = 0;
         while(cont < tareas.size()){
-            System.out.println("Tarea nº "+ (cont +1) + " " +tareas.get(cont).getName()+ ",           " +
-                tareas.get(cont).getHecha());
+            if(tareas.get(cont).getHecha() == true ){
+                System.out.println("Tarea nº "+ (cont +1) + " " +tareas.get(cont).getName()+ ",           " +
+                "------------HECHO.");
+            }
+            else{
+                System.out.println("Tarea nº "+ (cont +1) + " " +tareas.get(cont).getName()+ ",           " +
+                "------------Sin acabar.");
+            }
+            
             cont ++;           
         }
         System.out.println("================================");
@@ -59,8 +66,11 @@ public class ListaTareas
      */
     public void muestraTareaConCadena(String cadena){
         for(Tarea tarea: tareas){
-            if(tarea.getName().contains(cadena)){
-                System.out.println(tarea.getName()+ ". ---está completada? " +tarea.getHecha());
+            if(tarea.getName().contains(cadena) && tarea.getHecha() == true){
+                System.out.println(tarea.getName()+ ". ---tarea hecha.? ");
+            }
+            else if(tarea.getName().contains(cadena) && tarea.getHecha() == false){
+                System.out.println(tarea.getName()+ ". ---tarea sin hacer.? ");
             }
         }
     }
@@ -74,7 +84,7 @@ public class ListaTareas
             tareas.remove(posicion );
         }
         else{
-             System.out.println("Herror, solo son válidos valores entre 1 y " +tareas.size());
+             System.out.println("Error, solo son válidos valores entre 1 y " +tareas.size());
         }
     }
 }
