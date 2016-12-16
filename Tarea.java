@@ -23,7 +23,6 @@ public class Tarea
      */
     public String getName()
     {
-        // put your code here
         return name;
     }
     
@@ -32,7 +31,6 @@ public class Tarea
      */
     public boolean getHecha()
     {
-        // put your code here
         return hecha;
     }
     
@@ -42,6 +40,15 @@ public class Tarea
     public void setHecha(boolean estaHecha)
     {
          hecha = estaHecha;
+    }
+    
+    public String toString(){
+        String textoADevolver= "";
+        if(hecha){
+            textoADevolver += "HECHA.";
+        }
+        textoADevolver += getName();
+        return textoADevolver;
     }
 }
 
