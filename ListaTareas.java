@@ -56,6 +56,35 @@ public class ListaTareas
     }
 
     /**
+     * muestra la lista de tareas, numeradas y por orden de preferencias.-------------------------------------  **************************************
+     */
+    public void mostrarTareasPorOrdenDePrioridad(){
+        int cont = 0;
+        int cont5 = 5;
+        copia.clear();
+        System.out.println("  ***** LISTA ORDENADA POR PRIORIDADES. ******");
+        System.out.println("");
+        
+        while( tareas.size() != copia.size()){
+            for(Tarea tarea: tareas){
+                if(tarea.getPrioridad() == cont5 ){
+                    String val = "Tarea nº "+ (cont +1) + " " +tarea.getHecha2()+ " " +tarea.getName()+ ",       Prioridad_____" +
+                                       tarea.getPrioridad();
+                    copia.add(val);
+                    cont ++;                    
+                }
+            } 
+            cont5 --;
+        }
+        
+        for(String tarea: copia){
+            System.out.println(tarea);
+        }
+        System.out.println("================================");
+        System.out.println("");
+    }    
+    
+    /**
      * mt para marcar una tarea como completada
      */
     public void marcarTareaComoHecha(int numTarea){
