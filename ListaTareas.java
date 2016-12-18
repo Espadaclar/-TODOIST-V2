@@ -71,6 +71,22 @@ public class ListaTareas
     }
 
     /**
+     * mt para asignar una prioridad [0 / 5] a las tareas.
+     */
+    public void asignarPrioridad( int tarea3, int prioridad){
+        tarea3 = tarea3 -1;
+        if(tarea3 < 0 || tarea3 > tareas.size()){
+            System.out.println("Error, solo son válidos valores entre 1 y " +tareas.size());
+        }
+        else if(prioridad < 0 || prioridad > 5){
+            System.out.println("Error, solo son válidos valores entre 1 y 5.");
+        }
+        else{
+            tareas.get(tarea3).ponerPrioridad(prioridad);
+        }    
+    }
+    
+    /**
      * metodo para eliminar una tarea indicando la posición que ocupa.
      */
     public void eliminaTarea(int posicion){
