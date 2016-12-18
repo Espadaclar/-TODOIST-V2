@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Comparator;
 /**
  * 
  */
@@ -7,13 +9,14 @@ public class ListaTareas
 {
     // instance variables - replace the example below with your own
     private ArrayList<Tarea> tareas;
-
+    private ArrayList<String> copia;
     /**
      * Constructor for objects of class ListaTareas
      */
     public ListaTareas()
     {
         tareas = new ArrayList<>();
+        copia = new ArrayList<>();
     }
 
     /**
@@ -31,16 +34,22 @@ public class ListaTareas
     public void mostrarTareas(){
         int cont = 0;
         while(cont < tareas.size()){
-            if(tareas.get(cont).getHecha() == true ){
-                System.out.println("Tarea nº "+ (cont +1) + " " +tareas.get(cont).getName()+ ",           " +
-                "------------HECHO.");
-            }
-            else{
-                System.out.println("Tarea nº "+ (cont +1) + " " +tareas.get(cont).getName()+ ",           " +
-                "------------Sin acabar.");
-            }
-            
+            System.out.println("Tarea nº "+ (cont +1) + "  " +tareas.get(cont).getHecha2()+  " " +tareas.get(cont).getName()+ " ,        Prioridad;  " +
+                tareas.get(cont).getPrioridad());
             cont ++;           
+        }
+        System.out.println("================================");
+        System.out.println("");
+    }
+
+    /**
+     * mt para mostrar las tareas que contengan una determinada cadena pasada como parámetro, indicando si están completadas o no.
+     */
+    public void mostraTareaConCadena(String cadena){
+        for(Tarea tarea: tareas){
+            if(tarea.getName().contains(cadena)){
+                System.out.println(tarea.getName()+ " " +tarea.getHecha2()+ ", Prioridad; " +tarea.getPrioridad());
+            }   
         }
         System.out.println("================================");
         System.out.println("");
@@ -49,7 +58,7 @@ public class ListaTareas
     /**
      * mt para marcar una tarea como completada
      */
-    public void marcarTarea(int numTarea){
+    public void marcarTareaComoHecha(int numTarea){
         numTarea = numTarea -1;
         if(numTarea >= 0 && numTarea < tareas.size()){
             tareas.get(numTarea).setHecha(true);
@@ -62,20 +71,6 @@ public class ListaTareas
     }
 
     /**
-     * mt para mostrar las tareas que contengan una determinada cadena pasada como parámetro, indicando si están completadas o no.
-     */
-    public void muestraTareaConCadena(String cadena){
-        for(Tarea tarea: tareas){
-            if(tarea.getName().contains(cadena) && tarea.getHecha() == true){
-                System.out.println(tarea.getName()+ ". ---tarea hecha.? ");
-            }
-            else if(tarea.getName().contains(cadena) && tarea.getHecha() == false){
-                System.out.println(tarea.getName()+ ". ---tarea sin hacer.? ");
-            }
-        }
-    }
-
-    /**
      * metodo para eliminar una tarea indicando la posición que ocupa.
      */
     public void eliminaTarea(int posicion){
@@ -84,13 +79,8 @@ public class ListaTareas
             tareas.remove(posicion );
         }
         else{
-             System.out.println("Error, solo son válidos valores entre 1 y " +tareas.size());
+            System.out.println("Error, solo son válidos valores entre 1 y " +tareas.size());
         }
     }
-    
+
 }
-
-
-
-
-
