@@ -10,6 +10,7 @@ public class ListaTareas
     // instance variables - replace the example below with your own
     private ArrayList<Tarea> tareas;
     private ArrayList<String> copia;
+
     /**
      * Constructor for objects of class ListaTareas
      */
@@ -19,6 +20,13 @@ public class ListaTareas
         copia = new ArrayList<>();
     }
 
+        /**
+     * Poner fecha límite a las tareas para presentarlas --------------------------------------------------------- 0322
+     */
+    public void fechaDePresentacion( int numTarea, int anno,  int mes, int dia){
+        tareas.get(numTarea).ponerFecha( anno,  mes,  dia);
+    }
+    
     /**
      * mt que añade una tarea a la colección poniendo el nombre de la tarea 
      */
