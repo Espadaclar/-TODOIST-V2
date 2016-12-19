@@ -1,4 +1,5 @@
 
+import java.time.LocalDate;
 /**
  *
  */
@@ -8,6 +9,7 @@ public class Tarea
     private String name;
     private boolean hecha;
     private int prioridad;
+    private LocalDate ponerFecha; 
 
     /**
      * Constructor for objects of class Tarea
@@ -17,7 +19,16 @@ public class Tarea
         this.name = name;
         hecha = false;
         prioridad = 0;
-        
+        ponerFecha = null;
+
+    }
+
+    public void ponerFecha(int anno, int mes, int dia){
+        ponerFecha = LocalDate.of(anno, mes, dia); 
+    }
+
+    public LocalDate devuelveFecha(){
+        return ponerFecha;
     }
 
     /**
@@ -27,7 +38,7 @@ public class Tarea
     {
         return name;
     }
-    
+
     public String getHecha2()
     {
         String val = "";
@@ -42,36 +53,45 @@ public class Tarea
      */
     public void setHecha(boolean estaHecha)
     {
-         hecha = estaHecha;
+        hecha = estaHecha;
     }
-    
+
     /**
      * mt que asigna la prioridad de la tarea. 
      */
     public void ponerPrioridad(int prioridad2)
     {
-         prioridad = prioridad2;
+        prioridad = prioridad2;
     }
-    
+
     /**
      * retorna la prioridad
      */
     public int getPrioridad()
     {
-         return prioridad;
+        return prioridad;
     }
-    
+
     public String toString(){
-        String textoADevolver= "";
-        if(hecha){
-            textoADevolver += "HECHA.";
+        if(ponerFecha != null){
+            String textoADevolver= "";
+            if(hecha){
+                textoADevolver += "HECHA.";
+            }
+            textoADevolver += getName()+ " Fecha de finalización; " +devuelveFecha() + "  Prioridad. " +getPrioridad();
+            return textoADevolver;
         }
-        textoADevolver += getName();
-        return textoADevolver;
+        else{
+            String textoADevolver= "";
+            if(hecha){
+                textoADevolver += "HECHA.";
+            }
+            textoADevolver += getName()+ "  Prioridad. " +getPrioridad();
+            return textoADevolver;
+        }
+        
     }
 }
-
-
 
 
 

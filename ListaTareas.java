@@ -108,7 +108,7 @@ public class ListaTareas
             System.out.println("Error, solo son válidos valores entre 1 y " +tareas.size());
         }
         else if(prioridad < 0 || prioridad > 5){
-            System.out.println("Error, solo son válidos valores entre 1 y 5.");
+            System.out.println("Error, en prioridad solo son válidos valores entre 1 y 5.");
         }
         else{
             tareas.get(tarea3).ponerPrioridad(prioridad);
