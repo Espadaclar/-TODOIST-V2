@@ -1,7 +1,6 @@
-
 import java.time.LocalDate;
 /**
- *
+ *franciscoJavier.
  */
 public class Tarea
 {
@@ -73,25 +72,25 @@ public class Tarea
     }
 
     public String toString(){
+        String textoADevolver= "";
         if(ponerFecha != null){
-            String textoADevolver= "";
             if(hecha){
-                textoADevolver += "HECHA.";
+                textoADevolver += " HECHA. ";
             }
             textoADevolver += getName()+ " Fecha de finalización; " +devuelveFecha() + "  Prioridad. " +getPrioridad();
-            return textoADevolver;
         }
         else{
-            String textoADevolver= "";
             if(hecha){
-                textoADevolver += "HECHA.";
+                textoADevolver += " HECHA. ";
             }
             textoADevolver += getName()+ "  Prioridad. " +getPrioridad();
-            return textoADevolver;
         }
-        
+         return textoADevolver;
     }
 }
+
+
+
 
 
 
