@@ -156,6 +156,20 @@ public class ListaTareas
             cont ++;            
         }
     }
+    
+    /**
+     *muestre poir pantalla el listado de tareas vencidas. Si no hay ninguna, no sale nada por pantalla.
+     */
+        public void  mostrarVencidas(){
+            LocalDate vencenHoy = LocalDate.now();
+        int cont = 1;
+        for(Tarea tarea: tareas){
+            if(tarea.devuelveFecha() != null && tarea.devuelveFecha().isBefore(vencenHoy)){
+                System.out.println("Tarea nº "+ cont + "  " + tarea.toString()); 
+            }
+            cont ++;            
+        }
+    }
 }
 
 
