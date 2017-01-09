@@ -1,12 +1,11 @@
 
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Collections;
 import java.util.Comparator;
-
+import java.time.LocalDate;
 /**
- * 
+ * franciscoJavier.
  */
 public class ListaTareas
 {
@@ -63,7 +62,7 @@ public class ListaTareas
     }
 
     /**
-     * mt para marcar una tarea como completada
+     * mt para marcar una tarea como finalizada.
      */
     public void ponerTareaComoHecha(int numTarea){
         numTarea = numTarea -1;
@@ -143,4 +142,28 @@ public class ListaTareas
         }
     }
 
+    /**
+     * muestre por pantalla el listado de tareas con fecha de vencimiento hoy. Si no hay ninguna, el 
+     * listado debe aparecer vacío.
+     */
+    public void mostrarHoy(){
+        LocalDate vencenHoy = LocalDate.now();
+        int cont = 1;
+        for(Tarea tarea: tareas){
+            if(tarea.devuelveFecha() != null && tarea.devuelveFecha().isEqual(vencenHoy)){
+                System.out.println("Tarea nº "+ cont + "  " + tarea.toString()); 
+            }
+            cont ++;            
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
