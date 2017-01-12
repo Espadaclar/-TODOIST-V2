@@ -11,7 +11,8 @@ public class ListaTareas
 {
     private ArrayList<Tarea> tareas;
     private ArrayList<Tarea> copia;//-------- para almacenar las tareas por el grado de priorida, grado 0 aparecerán en última posición.
-
+    private int id; //--------- para poner un identificativo a cada tarea.
+    
     /**
      * Constructor for objects of class ListaTareas
      */
@@ -19,6 +20,7 @@ public class ListaTareas
     {
         tareas = new ArrayList<>();
         copia = new ArrayList<>();
+        id = 10; // ------------------- lo inicializamos a 10 porque ha de tener dos dígitos.
     }
 
     /**
@@ -26,7 +28,8 @@ public class ListaTareas
      */
     public void addTarea(String otraTarea)
     {
-        Tarea tarea2 = new Tarea(otraTarea);
+        Tarea tarea2 = new Tarea(otraTarea, id);
+        id ++; //--------------------- cada vez que invocamos este mt, id aumenta en 1.
         tareas.add(tarea2);
     }
 
@@ -177,7 +180,7 @@ public class ListaTareas
         int cont = 0;//almacenará el valor de la tarea más prioritaria.
         int cont5 = 5;//su valor irá decreciendo a la vez que se compara con el valor prioritario de cada tarea.
         boolean encontrado = false;
-        while(!encontrado){
+        while(!encontrado && !tareas.isEmpty()){
             for(Tarea tarea: tareas){
                 if(tarea.getPrioridad() >= cont5 ){
                     cont = cont5;
@@ -198,15 +201,14 @@ public class ListaTareas
      */
     public void verTareaMasPrioritaria2(){
         if(tareas.size() > 0){
-            Tarea mayorPrioridad = tareas.get(0);
-            for(Tarea tarea: tareas){
+            Tarea mayorPrioridad = tareas.get(0);//pongo a la primer tarea como la que mayor prioridad tiene.
+            for(Tarea tarea: tareas){            //recorro la colección, y si hay alguna mayor, la guardo en la VL mayorPrioridad.
                 if(tarea.getPrioridad() >= mayorPrioridad.getPrioridad()){
                     mayorPrioridad = tarea;
                 }
             }
             System.out.println(mayorPrioridad);
         }
-        
     }
 }
 

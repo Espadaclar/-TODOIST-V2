@@ -9,17 +9,18 @@ public class Tarea
     private boolean hecha;
     private int prioridad;
     private LocalDate ponerFecha; 
+    private int id;
 
     /**
      * Constructor for objects of class Tarea
      */
-    public Tarea(String name)
+    public Tarea(String name, int id)
     {
         this.name = name;
         hecha = false;
         prioridad = 0;
         ponerFecha = null;
-
+        this.id = id;
     }
 
     public void ponerFecha(int anno, int mes, int dia){
@@ -30,6 +31,13 @@ public class Tarea
         return ponerFecha;
     }
 
+    /**
+     * retorna el valor del id de la tarea.
+     */
+    public int getId(){
+        return id;
+    }
+    
     /**
      * mt que devuelve el nombre de la tarea. 
      */
@@ -85,7 +93,7 @@ public class Tarea
             }
             textoADevolver += getName()+ "  Prioridad. " +getPrioridad();
         }
-         return textoADevolver;
+         return "ID. " +getId()+ " " +textoADevolver;
     }
 }
 
