@@ -106,12 +106,11 @@ public class ListaTareas
      * muestra la lista de tareas, numeradas y por orden de preferencias.-------------------------------------  **************************************
      */
     public void mostrarTareasPorOrdenDePrioridad(){
-        int cont = 1;
-        int cont5 = 5;
-        copia.clear();
+        int cont = 1; //permite mostrar las tareas numeradas en el bucle for.
+        int cont5 = 5;//facilita el buen funcionamiento en le bucle while.
         System.out.println("  ***** LISTA ORDENADA POR PRIORIDADES. ******");
         System.out.println("");
-        copia.clear();
+        copia.clear();//el ArrayList copia es siempre vaciado antes de cargarle de nuevo.
         while( tareas.size() != copia.size()){
             for(Tarea tarea: tareas){
                 if(tarea.getPrioridad() == cont5 ){
@@ -156,12 +155,12 @@ public class ListaTareas
             cont ++;            
         }
     }
-    
+
     /**
      *muestre poir pantalla el listado de tareas vencidas. Si no hay ninguna, no sale nada por pantalla.
      */
-        public void  mostrarVencidas(){
-            LocalDate vencenHoy = LocalDate.now();
+    public void  mostrarVencidas(){
+        LocalDate vencenHoy = LocalDate.now();
         int cont = 1;
         for(Tarea tarea: tareas){
             if(tarea.devuelveFecha() != null && tarea.devuelveFecha().isBefore(vencenHoy)){
@@ -170,7 +169,50 @@ public class ListaTareas
             cont ++;            
         }
     }
+
+    /**
+     * muestre la tarea con la más alta prioridad. Si hay varias empatadas, debe mostrarl todas.
+     */
+    public void verTareaMasPrioritaria(){
+        int cont = 0;//almacenará el valor de la tarea más prioritaria.
+        int cont5 = 5;//su valor irá decreciendo a la vez que se compara con el valor prioritario de cada tarea.
+        boolean encontrado = false;
+        while(!encontrado){
+            for(Tarea tarea: tareas){
+                if(tarea.getPrioridad() >= cont5 ){
+                    cont = cont5;
+                    encontrado = true;
+                    if(tarea.getPrioridad() == cont ){
+                        System.out.println( tarea.toString()); 
+                    }
+                }
+            }
+            cont5 --;
+        }
+        System.out.println("================================");
+        System.out.println("");
+    }
+    
+    /**
+     * muestre la tarea con mayor prioridad. En caso de empate, nos muestra solo la última tarea
+     */
+    public void verTareaMasPrioritaria2(){
+        if(tareas.size() > 0){
+            Tarea mayorPrioridad = tareas.get(0);
+            for(Tarea tarea: tareas){
+                if(tarea.getPrioridad() >= mayorPrioridad.getPrioridad()){
+                    mayorPrioridad = tarea;
+                }
+            }
+            System.out.println(mayorPrioridad);
+        }
+        
+    }
 }
+
+
+
+
 
 
 
