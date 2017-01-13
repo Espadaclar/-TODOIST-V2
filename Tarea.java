@@ -46,6 +46,14 @@ public class Tarea
         return name;
     }
 
+    /**
+     * devuelve true si la tarea está hecha.
+     */
+    public boolean getHecha()
+    {
+        return hecha;
+    }
+    
     public String getHecha2()
     {
         String val = "";

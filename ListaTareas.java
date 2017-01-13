@@ -51,8 +51,8 @@ public class ListaTareas
             System.out.println("");
         }
         else{
-            if(controlDeId(id)){ //-------------------------------------------------------- controlDeId(id) es el mt nº 13.
-                tareas.get(posicionDelId(id)).ponerPrioridad(prioridad);// ---------------- posicionDelId(id) es el mt nº 14.
+            if(controlDeId(id)){ //-------------------------------------------------------------- controlDeId(id) es el mt nº 33.
+                tareas.get(posicionDelId(id)).ponerPrioridad(prioridad);// ---------------------- posicionDelId(id) es el mt nº 34.
             }            
         }    
     }
@@ -62,8 +62,8 @@ public class ListaTareas
      * 
      */
     public void ponerTareaComoHecha(int id){
-        if(controlDeId(id)){//------------------------------------------------------------- controlDeId(id) es el mt nº 13.
-            tareas.get(posicionDelId(id)).setHecha(true);// ------------------------------- posicionDelId(id) es el mt nº 14.
+        if(controlDeId(id)){//------------------------------------------------------------------- controlDeId(id) es el mt nº 33.
+            tareas.get(posicionDelId(id)).setHecha(true);// ----------------------------------- posicionDelId(id) es el mt nº 34.
         }
     }
 
@@ -71,8 +71,8 @@ public class ListaTareas
      * metodo para eliminar una tarea indicando el id de la tarea.------------------------------------------------------------- 12
      */
     public void eliminaTarea(int id){
-        if(controlDeId(id)){//------------------------------------------------------------- controlDeId(id) es el mt nº 13.
-            tareas.remove(posicionDelId(id));// -------------------------------------------- posicionDelId(id) es el mt nº 14.
+        if(controlDeId(id)){//-------------------------------------------------------------------- controlDeId(id) es el mt nº 33.
+            tareas.remove(posicionDelId(id));// ------------------------------------------------ posicionDelId(id) es el mt nº 34.
         }
     }
 
@@ -199,15 +199,27 @@ public class ListaTareas
     }
 
     /**
-     * mt para controlar si el id pasado como parametro es válido --------------------------------------------------------------- 13
+     * devuelve el id de la tarea pendiente por hacer, más antigua (por orden de registro), si no hay tareas por ----------------- 12
+     * completar devuelve -1.
      */
-    public boolean controlDeId(int id){
-        //         boolean idValido = true;
-        //         if(id < 10 || id > (tareas.size()  + 9) ){
-        //             idValido = false;
-        //             System.out.println("Error, solo son válidos valores entre 10 y " +(tareas.size() + 9));
-        //         }
-        //         return idValido; boolean idValido = true;
+    public int tareaMasViejaPendiente(){
+        int idTarea = -1;
+        int cont = 0;
+        boolean encontrado = false;
+        while(cont < tareas.size() && !encontrado){
+            if(!tareas.get(cont).getHecha()){
+                idTarea = tareas.get(cont).getId();
+                encontrado = true;
+            }
+            cont ++;
+        }
+        return idTarea;
+    }
+    
+    /**
+     * mt para controlar si el id pasado como parametro es válido --------------------------------------------------------------- 33
+     */
+    private boolean controlDeId(int id){
         boolean idValido = false;
         if(id >= 10 && id < 100 ){
             for(Tarea tarea: tareas){
@@ -223,11 +235,11 @@ public class ListaTareas
     }
 
     /**
-     * mt para controlar si tenemos alguna tarea con el id pasado como parámetro, si la hay, devuelve su posición. -------------- 14
+     * mt para controlar si tenemos alguna tarea con el id pasado como parámetro, si la hay, devuelve su posición. -------------- 34
      */
-    public int posicionDelId(int id){
+    private int posicionDelId(int id){
         int cont = 0;//facilita el funcionamiento del bucle while.
-        int tareaConId = 0;
+        int tareaConId = 0;//almacenará al posición de la tarea que contenga el ID pasado como parámetro.
         boolean encontrado = false;
         while(cont < tareas.size() && !encontrado){
             if(tareas.get(cont).getId() == id){
