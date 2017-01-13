@@ -33,44 +33,14 @@ public class ListaTareas
         tareas.add(tarea2);
     }
 
-    //     /**
-    //      * Poner fecha límite a las tareas para presentarlas ------------------------------------------------ 0322---------------- 2
-    //      */
-    //     public void ponerFechaDePresentacion( int numTarea, int anno,  int mes, int dia){
-    //         numTarea = numTarea -1;
-    //         if(numTarea >= 1 && numTarea < tareas.size()){
-    //             tareas.get(numTarea).ponerFecha( anno,  mes,  dia);
-    //         }
-    //         else{
-    //             System.out.println("Error, solo valores del intervalo [ 1 / " +tareas.size()+ " ]");
-    //             System.out.println("================================");
-    //             System.out.println("");
-    //         }
-    //     }
-
     /**
      * Poner fecha límite a las tareas para presentarlas, indicando su ID.------------------------------- 0322---------------- 2
      */
     public void ponerFechaDePresentacion(int idTarea, int anno,  int mes, int dia){
-        if(controlDeId(idTarea)){//------------------------------------------------------------- controlDeId(id) es el mt nº 13.
-            tareas.get(posicionDelId(idTarea)).ponerFecha( anno,  mes,  dia);// ---------------- posicionDelId(id) es el mt nº 14.
+        if(controlDeId(idTarea)){//------------------------------------------------------- controlDeId(id) es el mt nº 13.
+            tareas.get(posicionDelId(idTarea)).ponerFecha( anno,  mes,  dia);// ----------- posicionDelId(id) es el mt nº 14.
         }
     }
-    //     /**
-    //      * mt para asignar una prioridad [0 / 5] a las tareas.
-    //      */
-    //     public void ponerPrioridad( int tarea3, int prioridad){
-    //         tarea3 = tarea3 -1;
-    //         if(tarea3 < 0 || tarea3 > tareas.size()){
-    //             System.out.println("Error, solo son válidos valores entre 1 y " +tareas.size());
-    //         }
-    //         else if(prioridad < 0 || prioridad > 5){
-    //             System.out.println("Error, en prioridad solo son válidos valores entre 1 y 5.");
-    //         }
-    //         else{
-    //             tareas.get(tarea3).ponerPrioridad(prioridad);
-    //         }    
-    //     }
 
     /**
      * mt para asignar una prioridad [0 / 5] a las tareas, indicando el ID de la tarea. -------------------------------------- 3
@@ -81,26 +51,12 @@ public class ListaTareas
             System.out.println("");
         }
         else{
-            if(controlDeId(id)){ //------------------------------------------------------------- controlDeId(id) es el mt nº 13.
-                tareas.get(posicionDelId(id)).ponerPrioridad(prioridad);// --------------------- posicionDelId(id) es el mt nº 14.
+            if(controlDeId(id)){ //-------------------------------------------------------- controlDeId(id) es el mt nº 13.
+                tareas.get(posicionDelId(id)).ponerPrioridad(prioridad);// ---------------- posicionDelId(id) es el mt nº 14.
             }            
         }    
     }
-    //     /**
-    //      * mt para marcar una tarea como finalizada.
-    //      * 
-    //      */
-    //     public void ponerTareaComoHecha(int numTarea){
-    //         numTarea = numTarea -1;
-    //         if(numTarea >= 0 && numTarea < tareas.size()){
-    //             tareas.get(numTarea).setHecha(true);
-    //         }
-    //         else{
-    //             System.out.println("Error, solo son válidos valores entre 10 y " +(tareas.size() + 10));
-    //             System.out.println("================================");
-    //             System.out.println("");
-    //         }
-    //     }
+
     /**
      * mt para marcar una tarea como finalizada marcando el ID de la tarea.--------------------------------------------------- 4
      * 
@@ -108,6 +64,15 @@ public class ListaTareas
     public void ponerTareaComoHecha(int id){
         if(controlDeId(id)){//------------------------------------------------------------- controlDeId(id) es el mt nº 13.
             tareas.get(posicionDelId(id)).setHecha(true);// ------------------------------- posicionDelId(id) es el mt nº 14.
+        }
+    }
+
+    /**
+     * metodo para eliminar una tarea indicando el id de la tarea.------------------------------------------------------------- 12
+     */
+    public void eliminaTarea(int id){
+        if(controlDeId(id)){//------------------------------------------------------------- controlDeId(id) es el mt nº 13.
+            tareas.remove(posicionDelId(id));// -------------------------------------------- posicionDelId(id) es el mt nº 14.
         }
     }
 
@@ -221,8 +186,8 @@ public class ListaTareas
      */
     public void verTareaMasPrioritaria2(){
         if(tareas.size() > 0){
-            Tarea mayorPrioridad = tareas.get(0);//pongo a la primer tarea como la que mayor prioridad tiene.
-            for(Tarea tarea: tareas){            //recorro la colección, y si hay alguna mayor, la guardo en la VL mayorPrioridad.
+            Tarea mayorPrioridad = tareas.get(0);//---------pongo a la primer tarea como la que mayor prioridad tiene.
+            for(Tarea tarea: tareas){            //--recorro la colección, y si hay alguna mayor, la guardo en la VL mayorPrioridad.
                 if(tarea.getPrioridad() >= mayorPrioridad.getPrioridad()){
                     mayorPrioridad = tarea;
                 }
@@ -233,38 +198,26 @@ public class ListaTareas
         System.out.println("");
     }
 
-    //     /**
-    //      * metodo para eliminar una tarea indicando la posición que ocupa.----------------------------------------------------------- 12
-    //      */
-    //     public void eliminaTarea(int posicion){
-    //         posicion = posicion -1;
-    //         if(posicion >= 0 && posicion < tareas.size()){
-    //             tareas.remove(posicion );
-    //         }
-    //         else{
-    //             System.out.println("Error, solo son válidos valores entre 1 y " +tareas.size());
-    //         }
-    //     }
-    /**
-     * metodo para eliminar una tarea indicando el id de la tarea.----------------------------------------------------------- 12
-     */
-    public void eliminaTarea(int id){
-        if(controlDeId(id)){//------------------------------------------------ controlDeId(id) es el mt nº 13.
-            tareas.remove(posicionDelId(id));// ------------------------------ posicionDelId(id) es el mt nº 14.
-        }
-        else{
-            System.out.println("Error, solo son válidos valores entre 1 y " +tareas.size());
-        }
-    }
-
     /**
      * mt para controlar si el id pasado como parametro es válido --------------------------------------------------------------- 13
      */
     public boolean controlDeId(int id){
-        boolean idValido = true;
-        if(id < 10 || id > (tareas.size()  + 9) ){
-            idValido = false;
-            System.out.println("Error, solo son válidos valores entre 10 y " +(tareas.size() + 9));
+        //         boolean idValido = true;
+        //         if(id < 10 || id > (tareas.size()  + 9) ){
+        //             idValido = false;
+        //             System.out.println("Error, solo son válidos valores entre 10 y " +(tareas.size() + 9));
+        //         }
+        //         return idValido; boolean idValido = true;
+        boolean idValido = false;
+        if(id >= 10 && id < 100 ){
+            for(Tarea tarea: tareas){
+                if(tarea.getId() == id){
+                    idValido = true;
+                }
+            }
+        }
+        else{
+            System.out.println("Error, solo son válidos valores entre 10 y " +(tareas.size() + 9));        
         }
         return idValido;
     }
