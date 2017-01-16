@@ -48,4 +48,21 @@ public class ListaTareasTest
     public void tearDown()
     {
     }
+
+    @Test
+    public void testNumeroTareasSinTerminar()
+    {
+        listaTar1.mostrarTareas();
+        assertEquals(6, listaTar1.numeroTareasSinTerminar());
+        listaTar1.ponerTareaComoHecha(10);
+        assertEquals(5, listaTar1.numeroTareasSinTerminar());
+        listaTar1.ponerTareaComoHecha(11);
+        assertEquals(4, listaTar1.numeroTareasSinTerminar());
+    }
 }
+
+
+
+
+
+

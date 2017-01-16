@@ -24,7 +24,7 @@ public class ListaTareas
     }
 
     /**
-     * mt que añade una tarea a la colección poniendo el nombre de la tarea ------------------------------------------------- 1
+     * mt que añade una tarea a la colección poniendo el nombre de la tarea -------------------------------------- 1
      */
     public void addTarea(String otraTarea)
     {
@@ -34,7 +34,7 @@ public class ListaTareas
     }
 
     /**
-     * Poner fecha límite a las tareas para presentarlas, indicando su ID.------------------------------- 0322---------------- 2
+     * Poner fecha límite a las tareas para presentarlas, indicando su ID.---------------------------------------- 2
      */
     public void ponerFechaDePresentacion(int idTarea, int anno,  int mes, int dia){
         if(controlDeId(idTarea)){//------------------------------------------------------- controlDeId(id) es el mt nº 13.
@@ -43,7 +43,7 @@ public class ListaTareas
     }
 
     /**
-     * mt para asignar una prioridad [0 / 5] a las tareas, indicando el ID de la tarea. -------------------------------------- 3
+     * mt para asignar una prioridad [0 / 5] a las tareas, indicando el ID de la tarea. ---------------------------- 3
      */
     public void ponerPrioridad(int id, int prioridad){
         if(prioridad < 0 || prioridad > 5){
@@ -58,8 +58,7 @@ public class ListaTareas
     }
 
     /**
-     * mt para marcar una tarea como finalizada marcando el ID de la tarea.--------------------------------------------------- 4
-     * 
+     * mt para marcar una tarea como finalizada marcando el ID de la tarea.----------------------------------------- 4
      */
     public void ponerTareaComoHecha(int id){
         if(controlDeId(id)){//------------------------------------------------------------------- controlDeId(id) es el mt nº 33.
@@ -68,7 +67,7 @@ public class ListaTareas
     }
 
     /**
-     * metodo para eliminar una tarea indicando el id de la tarea.------------------------------------------------------------- 12
+     * metodo para eliminar una tarea indicando el id de la tarea.------------------------------------------------ 5
      */
     public void eliminaTarea(int id){
         if(controlDeId(id)){//-------------------------------------------------------------------- controlDeId(id) es el mt nº 33.
@@ -77,7 +76,7 @@ public class ListaTareas
     }
 
     /**
-     * muestra la lista de tareas, numeradas.-------------------------------------------------------------------------------- 5
+     * muestra la lista de tareas, numeradas.---------------------------------------------------------------------- 6
      */
     public void mostrarTareas(){
         int cont = 0;
@@ -90,7 +89,7 @@ public class ListaTareas
     }
 
     /**
-     * mt para mostrar las tareas que contengan una determinada cadena pasada como parámetro,-------------------------------- 6
+     * mt para mostrar las tareas que contengan una determinada cadena pasada como parámetro,---------------------- 7
      * indicando si están completadas o no.
      */
     public void mostraTareaConLaCadena(String cadena){
@@ -104,7 +103,7 @@ public class ListaTareas
     }
 
     /**
-     * muestra la lista de tareas, numeradas y por orden de preferencias.------------------------------------------------------- 7
+     * muestra la lista de tareas, numeradas y por orden de preferencias.------------------------------------------- 8
      */
     public void mostrarTareasPorOrdenDePrioridad(){
         int cont = 1; //permite mostrar las tareas numeradas en el bucle for.
@@ -130,7 +129,7 @@ public class ListaTareas
     }   
 
     /**
-     * muestre por pantalla el listado de tareas con fecha de vencimiento hoy. Si no hay ninguna, el -------------------------- 8
+     * muestre por pantalla el listado de tareas con fecha de vencimiento hoy. Si no hay ninguna, el ---------------- 9
      * listado debe aparecer vacío.
      */
     public void mostrarHoy(){
@@ -145,7 +144,7 @@ public class ListaTareas
     }
 
     /**
-     *muestre poir pantalla el listado de tareas vencidas. Si no hay ninguna, no sale nada por pantalla.------------------------- 9
+     *muestre poir pantalla el listado de tareas vencidas. Si no hay ninguna, no sale nada por pantalla.------------ 10
      */
     public void  mostrarVencidas(){
         LocalDate vencenHoy = LocalDate.now();
@@ -159,7 +158,7 @@ public class ListaTareas
     }
 
     /**
-     * muestre la tarea con la más alta prioridad. Si hay varias empatadas, debe mostrarl todas.--------------------------------- 10
+     * muestre la tarea con la más alta prioridad. Si hay varias empatadas, debe mostrarl todas.--------------------- 11
      */
     public void verTareaMasPrioritaria(){
         int cont = 0;//almacenará el valor de la tarea más prioritaria.
@@ -182,7 +181,7 @@ public class ListaTareas
     }
 
     /**
-     * muestre la tarea con mayor prioridad. En caso de empate, nos muestra solo la última tarea ------------------------------- 11
+     * muestre la tarea con mayor prioridad. En caso de empate, nos muestra solo la última tarea -------------------- 12
      */
     public void verTareaMasPrioritaria2(){
         if(tareas.size() > 0){
@@ -199,8 +198,8 @@ public class ListaTareas
     }
 
     /**
-     * devuelve el id de la tarea pendiente por hacer, más antigua (por orden de registro), si no hay tareas por ----------------- 12
-     * completar devuelve -1.
+     * devuelve el id de la tarea pendiente por hacer, más antigua (por orden de registro), si no hay tareas por 
+     * completar devuelve -1.  -------------------------------------------------------------------------------------- 13
      */
     public int tareaMasViejaPendiente(){
         int idTarea = -1;
@@ -217,7 +216,24 @@ public class ListaTareas
     }
     
     /**
-     * mt para controlar si el id pasado como parametro es válido --------------------------------------------------------------- 33
+     * devuelve el nº de tareas que están sin terminar. ----------------------------------------------------------- 14
+     */
+    public int numeroTareasSinTerminar(){
+        int tareasTerminadas = 0;
+        int cont = 0;
+        while(cont < tareas.size()){
+            if(!tareas.get(cont).getHecha()){
+                tareasTerminadas ++;
+            }
+            cont ++;
+        }
+        
+        return tareasTerminadas;
+    }
+    
+    
+    /**
+     * mt para controlar si el id pasado como parametro es válido -------------------------------------------------- 33
      */
     private boolean controlDeId(int id){
         boolean idValido = false;
@@ -235,7 +251,8 @@ public class ListaTareas
     }
 
     /**
-     * mt para controlar si tenemos alguna tarea con el id pasado como parámetro, si la hay, devuelve su posición. -------------- 34
+     * mt para controlar si tenemos alguna tarea con el id pasado como parámetro, si la hay, devuelve su posición. 
+     * ------------------------------------------------------------------------------------------------------------------- 34
      */
     private int posicionDelId(int id){
         int cont = 0;//facilita el funcionamiento del bucle while.
