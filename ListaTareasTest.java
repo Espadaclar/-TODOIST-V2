@@ -59,7 +59,19 @@ public class ListaTareasTest
         listaTar1.ponerTareaComoHecha(11);
         assertEquals(4, listaTar1.numeroTareasSinTerminar());
     }
+
+    @Test
+    public void testHayTareasDuplicadas()
+    {
+        assertEquals(false, listaTar1.hayTareasDuplicadas());
+        listaTar1.mostrarTareas();
+        listaTar1.addTarea("ir al cine.");
+        assertEquals(true, listaTar1.hayTareasDuplicadas());
+        ListaTareas listaTar2 = new ListaTareas();
+        assertEquals(false, listaTar2.hayTareasDuplicadas());
+    }
 }
+
 
 
 

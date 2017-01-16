@@ -231,6 +231,28 @@ public class ListaTareas
         return tareasTerminadas;
     }
     
+    /**
+     * Devuelve true si hay tareas duplicadas. -------------------------------------------------------------------- 15
+     */
+    public boolean hayTareasDuplicadas(){
+        int cont = 0;//--facilita el funcionamiento del 1º while y la obtención de todas las tareas del ArrayList tareas 
+                     //   para ir guardandolas en la VL tarea2.
+        boolean encontrada = false;  // en cuanto encuentre dos tareas con el mismo nombre pasa a valer true, y el while finaliza.
+        while(cont < tareas.size() && !encontrada){
+            Tarea tarea2 = new Tarea(tareas.get(cont).getName(), tareas.get(cont).getId());
+            int cont2 = cont +1;//--facilita el funcionamiento del 2º while y la obtención del nombre de todas las tareas del 
+                          //ArrayList tareas   a partir de la 2º tarea, y ir comparandole con el nombre de la tarea guardada
+                          // en la VL tarea2.
+            while(cont2 < tareas.size() && !encontrada){
+                if(tareas.get(cont2).getName().equals(tarea2.getName())){
+                    encontrada = true;
+                }
+                cont2 ++;
+            }
+            cont ++;
+        }
+        return encontrada;
+    }
     
     /**
      * mt para controlar si el id pasado como parametro es válido -------------------------------------------------- 33
